@@ -31,7 +31,7 @@ namespace FacturasABM.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<T>>> GetAllAsync()
+		public virtual async Task<ActionResult<IEnumerable<T>>> GetAllAsync()
 		{
 			var results = await service.GetAllAsync();
 			return Ok(results);

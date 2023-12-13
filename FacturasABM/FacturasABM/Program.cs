@@ -1,11 +1,13 @@
-using FacturasABM.Data.Entidades;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+			options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+			);
 
 // Registra conexión con DbContext
 builder.Services.AddDbContext<FacturasDbContext>(options =>

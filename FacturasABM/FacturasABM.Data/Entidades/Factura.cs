@@ -1,18 +1,12 @@
 ﻿using FacturasABM.Core.Constantes;
 using FacturasABM.Core.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacturasABM.Data.Entidades
 {
 	public class Factura : EntidadBase
 	{
-		[Column("IdFactura")]
 		public override int Id { get => base.Id; set => base.Id = value; }
+		public string GUIDFactura { get; set; }
 		public string NumFactura { get; set; }
 		public decimal ImporteTotal { get; set; }
 		public decimal IVATotal { get; set; }		
@@ -29,6 +23,7 @@ namespace FacturasABM.Data.Entidades
 		public Factura()
 		{
 			NumFactura = string.Empty;
+			GUIDFactura = string.Empty;
 
 			LineasFactura = new List<LineaFactura>();
 		}

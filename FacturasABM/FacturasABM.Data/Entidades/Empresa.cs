@@ -10,7 +10,6 @@ namespace FacturasABM.Data.Entidades
 {
 	public class Empresa : EntidadBase
 	{
-		[Column("IdEmpresa")]
 		public override int Id { get => base.Id; set => base.Id = value; }
 		public string RazonSocial { get; set; }
 		public string CIF { get; set; }

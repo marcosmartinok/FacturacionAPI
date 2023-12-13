@@ -13,6 +13,5 @@ namespace FacturasABM.Controllers
 		{
 			service = new PersonaServicio(_context);
 		}
-
 	}
 }
