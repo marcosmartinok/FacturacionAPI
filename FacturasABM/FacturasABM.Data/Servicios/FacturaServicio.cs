@@ -150,6 +150,15 @@ namespace FacturasABM.Core.Servicios
 
 				foreach (var linea in input.LineasFactura)
 				{
+					// Validar que el IVA de cada línea coincida con los valores permitidos.
+					if (linea.IVA != IVA.IVA_Estandar &&
+						linea.IVA != IVA.IVA_Reducido &&
+						linea.IVA != IVA.IVA_Exento)
+					{
+						throw new Exception(
+							$"El valor de IVA no es válido. Los valores permitidos son: {IVA.IVA_Estandar}, {IVA.IVA_Reducido}, {IVA.IVA_Exento}");
+					}
+
 					// Agrega cada linea recibida a la factura.
 					factura.LineasFactura.Add(new LineaFactura()
 					{
