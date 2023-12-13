@@ -1,4 +1,5 @@
 ﻿using FacturasABM.Controllers;
+using FacturasABM.Core.Constantes;
 using FacturasABM.Core.DTOs;
 using FacturasABM.Core.Servicios;
 using FacturasABM.Data.Entidades;
@@ -26,11 +27,23 @@ namespace FacturasABM.Controladores
 		}
 
 		[HttpPost]
-		[Route("crear-factura")]
-		public async Task<ActionResult<IEnumerable<Factura>>> CrearFacturaAsync(CrearFacturaDto input)
+		//[Route("crear-factura")]
+		public async Task<ActionResult<IEnumerable<Factura>>> CrearAsync(CrearFacturaDto input)
 		{
 			var resultado = await ((FacturaServicio)service).CrearFacturaAsync(input);
 			return Ok(resultado);
+		}
+
+		[HttpPut]
+		public async Task<ActionResult<Factura>> EditarAsync(int id, EstadoFactura estado)
+		{
+			var factura = await service.UpdateAsync(new Factura()
+			{
+				Id = id,
+				Estado = estado
+			});
+
+			return Ok(factura);
 		}
 	}
 }

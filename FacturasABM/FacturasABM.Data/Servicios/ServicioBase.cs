@@ -45,12 +45,14 @@ namespace FacturasABM.Core.Servicios
 			}
 		}
 
-		public virtual async Task AddAsync(T item)
+		public virtual async Task<T> AddAsync(T item)
 		{
 			try
 			{
-				await _context.Set<T>().AddAsync(item);
+				var entity = await _context.Set<T>().AddAsync(item);
 				await _context.SaveChangesAsync();
+
+				return entity.Entity;
 			}
 			catch (Exception ex)
 			{
@@ -58,12 +60,14 @@ namespace FacturasABM.Core.Servicios
 			}
 		}
 
-		public virtual async Task UpdateAsync(T item)
+		public virtual async Task<T> UpdateAsync(T item)
 		{
 			try
 			{
-				_context.Set<T>().Update(item);
+				var entity = _context.Set<T>().Update(item);
 				await _context.SaveChangesAsync();
+
+				return entity.Entity;
 			}
 			catch (Exception ex)
 			{

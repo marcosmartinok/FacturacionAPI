@@ -37,20 +37,6 @@ namespace FacturasABM.Controllers
 			return Ok(results);
 		}
 
-		[HttpPost]
-		public async Task<ActionResult<T>> AddAsync(T item)
-		{
-			await service.AddAsync(item);
-			return Ok(await service.GetAllAsync());
-		}
-
-		[HttpPut]
-		public async Task<ActionResult<T>> Put(T item)
-		{
-			await service.UpdateAsync(item);
-			return Ok(await service.GetAllAsync());
-		}
-
 		[HttpDelete]
 		public async Task<ActionResult<T>> DeleteAsync(int id)
 		{

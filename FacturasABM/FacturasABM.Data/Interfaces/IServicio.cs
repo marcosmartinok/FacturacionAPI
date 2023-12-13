@@ -12,8 +12,8 @@ namespace FacturasABM.Core.Interfaces
 	{
 		Task<T> GetByIdAsync(int id);
 		Task<IEnumerable<T>> GetAllAsync();
-		Task AddAsync(T item);
-		Task UpdateAsync(T item);
+		Task<T> AddAsync(T item);
+		Task<T> UpdateAsync(T item);
 		Task<T> DeleteAsync(int id);
 	}
 }

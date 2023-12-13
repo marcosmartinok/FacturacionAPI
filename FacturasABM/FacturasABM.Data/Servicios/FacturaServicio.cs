@@ -2,12 +2,6 @@
 using FacturasABM.Core.DTOs;
 using FacturasABM.Data.Entidades;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacturasABM.Core.Servicios
 {
@@ -180,7 +174,7 @@ namespace FacturasABM.Core.Servicios
 			}
 		}
 
-		public override async Task UpdateAsync(Factura facturaEditada)
+		public override async Task<Factura> UpdateAsync(Factura facturaEditada)
 		{
 			try
 			{
@@ -191,6 +185,8 @@ namespace FacturasABM.Core.Servicios
 
 				_context.Facturas.Update(factura);
 				await _context.SaveChangesAsync();
+
+				return factura;
 			}
 			catch (Exception ex)
 			{
