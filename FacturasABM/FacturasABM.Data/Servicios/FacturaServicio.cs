@@ -140,6 +140,11 @@ namespace FacturasABM.Core.Servicios
 		{
 			try
 			{
+				if (input.LineasFactura.Count == 0)
+				{
+					throw new Exception("Una factura debe contener al menos una línea.");
+				}
+
 				decimal importeTotal = 0;
 				decimal IVATotal = 0;
 
